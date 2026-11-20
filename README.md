@@ -1,59 +1,19 @@
-# CRUDProducto
+# Gestión de Productos — CRUD con Angular y Firebase Cloud Firestore
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
+Aplicación web desarrollada en **Angular** e integrada con **Firebase Cloud Firestore** para administrar un catálogo de productos en tiempo real con persistencia en la nube.
 
-## Development server
+## Funcionalidades del CRUD
+- **Crear:** Registro de nuevos productos mediante formulario reactivo/controlado con validaciones estrictas (nombre y categoría con texto obligatorio, precio numérico $\ge 0$ y stock entero $\ge 0$).
+- **Consultar:** Lectura en tiempo real de la colección `productos` desde Cloud Firestore y visualización en tabla HTML.
+- **Actualizar:** Carga de datos de un producto existente en el formulario y actualización directa en Firestore mediante su identificador único (`id`).
+- **Eliminar:** Eliminación de registros previa confirmación del usuario, conservando el producto si se cancela la acción.
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Modelo de Datos (`Producto`)
+```typescript
+export interface Producto {
+  id?: string;
+  nombre: string;
+  precio: number;
+  stock: number;
+  categoria: string;
+}
